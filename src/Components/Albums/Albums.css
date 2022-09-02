@@ -1,0 +1,38 @@
+.album-user-details{
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    align-items: center;
+    margin: 2rem;
+    border-radius: 1rem;
+}
+
+.album-social-icon{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.album-user-address{
+    width: 100%;
+    text-align: left;
+}
+
+.address-data{
+    padding: 0.5rem 0 0 2rem;
+    line-height: 1.5rem;
+}
+
+.album-section-scroll{
+    margin: 1rem 2rem;
+}
+
+.albums{
+    background-color: aliceblue;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
