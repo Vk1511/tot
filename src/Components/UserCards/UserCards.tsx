@@ -4,7 +4,7 @@ import { fetchAllAlbums } from "../../Services/albums";
 import Mailto from "../../GlobalComponents/Mailto/Mailto";
 import "./UserCards.css";
 
-const UserCards = ({ setCurrentUserAlbum }: any) => {
+const UserCards = ({ setCurrentUserAlbum, setCurrentUserData }: any) => {
 
   const [users, setUsers] = useState<any>();
   const [userId, setUserId] = useState<any>();
@@ -14,21 +14,24 @@ const UserCards = ({ setCurrentUserAlbum }: any) => {
     userData.then((data) => {
       setUsers(data);
       setUserId(data[0].id);
+      setCurrentUserData(data[0]);
       fetchAndSetAlbum(data[0].id);
     });
   }, []);
 
-  const fetchAndSetAlbum = (firstUserId: number) => {
-    const albumData = fetchAllAlbums(firstUserId);
+  const fetchAndSetAlbum = (userId: number) => {
+    const albumData = fetchAllAlbums(userId);
     albumData.then((albumData) => {
       setCurrentUserAlbum(albumData);
     });
   };
 
-  const fetchAlbums = (id: any) => {
+  const fetchAlbums = (user: any) => {
+    const { id } = user;
     if (id !== userId) {
       setUserId(id);
       fetchAndSetAlbum(id);
+      setCurrentUserData(user);
     }
   };
 
@@ -82,7 +85,7 @@ const UserCards = ({ setCurrentUserAlbum }: any) => {
                   className="fa fa-folder"
                   aria-hidden="true"
                   style={{ color: id === userId ? "black" : "#34A654" }}
-                  onClick={() => fetchAlbums(id)}
+                  onClick={() => fetchAlbums(user)}
                 ></i>
               </div>
             </div>

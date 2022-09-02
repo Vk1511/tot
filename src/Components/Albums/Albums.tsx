@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Albums.css";
 
-const Albums = ({ currentUserAlbum }: any) => {
+const Albums = ({ currentUserAlbum, currentUserdata }: any) => {
   let navigate = useNavigate();
 
   const openAlbum = (albumId: number) => {

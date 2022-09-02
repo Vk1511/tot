@@ -1,13 +1,7 @@
 import { USERS } from "../Constants/API";
-import axios from "axios";
+import { getAPI } from "./APISchema";
 
 export const fetchAlluser = async () => {
-    const apidata = await axios.get(USERS)
-    .then(function (response) {
-        return response.data;
-    })
-    .catch(function (error) {
-        return error.message;
-    })
-    return apidata;
+    const users = getAPI(USERS);
+    return users;
 }
